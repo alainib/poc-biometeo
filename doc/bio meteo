@@ -1,0 +1,36 @@
+bio meteo
+`
+Les questions sur lesquel j'aimerais avoir votre avis que je ferai remonter au designer:
+# Fond d'écran: il s'agirait à priori d'un photo-montage qui produirait une seule image pour tout le fond. Pour permettre le responsive, on scale tout, ie. image de fond et mosaïque cliquable, titre, etc. On se pose des questions sur:
+la pertinence de faire le fonds en 1 seule image
+les problématiques de chargement sachant qu'on serait à 2000*6000px
+vu que le fond est censé couvrir les 3 zones Air/Sol/eau, il faut être sûr que chaque niveau de la photo de fonds est bien aligné avec la zone corrrespondante de l'interface, en particulier les mosaïques de photos d'espèces. 
+`
+une image par catégorie serait plus adapté pour le visuel déja, et pour le responsive. de plus il faut adapté le fond à la météo d'après ce que j'ai compris. bref je vote un fond par catégorie . 
+
+`
+# Courbes de niveau des nappes phréatiques et des rivières:
+1 . il faudrait pouvoir dire au designer les contraintes qu'on a en terme de style pour les courbes, et de tout ce qui touche à la décoration des dataviz
+`
+
+j'utilise souvent la librairie D3 pour les graphiques, il y a de tout comme style et c'est dyamique et clicable. 
+https://observablehq.com/@d3/gallery
+
+sinon il y a celle ci qui a l'air sympa :
+http://uber.github.io/react-vis/examples/showcases/plots
+
+`
+2. Est-ce qu'on aurait déjà en tête la librairie qu'on va utiliser pour ça?
+`
+D3 ou react-vis ?
+`
+3. Un de enjeux sera de pouvoir s'adapter aux données: pour le rivière on affichera le niveau sur 1 mois, mais sur les nappes sur 1 an, donc le nb de points et les échelles vont changer beaucoup d'une courbe à l'autre. A titre perso, j'ai recommandé de faire plutôt des courbes sans points mais juste une grille de fond qui permette de lire des valeurs plus précisément. (edited) 
+`
+c'est sur le même graphic en même temps ?
+
+
+
+
+
+j'ai l'impression qu'il manque tout de même certaines choses sur la maquette et que le cahier des charges "castre" bcq le potentiel du projet :disappointed:,
+un explorateur des données par catégories serait utile pour le grand public. il clic sur une image en page principale, ca lui ouvre la fiche détaillées  (comme sur la maquette) 
