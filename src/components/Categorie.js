@@ -18,7 +18,6 @@ import React from "react";
 
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -135,7 +134,7 @@ export default function Categorie(props) {
             </Grid>
           </Container>
         );
-      case "air":
+      default:
         return null;
     }
   }
@@ -143,7 +142,7 @@ export default function Categorie(props) {
     xs: 12,
     sm: 6
   };
-  if (props.name == "eau") {
+  if (props.name === "eau") {
     test = {
       xs: 6
     };
