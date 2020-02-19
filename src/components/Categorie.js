@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center"
   },
   overlay: {
-    backgroundColor: "rgba(13,53,78, 0.7)",
+    backgroundColor: "rgba(13,53,78, 0.6)",
     color: "white",
     position: "relative"
   },
@@ -52,17 +52,17 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     top: 0,
     width: "100%",
-    height: 75,
-    background: "linear-gradient( to top, transparent , rgba(13,53,78,0.98) )",
+    height: 45,
+    background: "linear-gradient( to top, transparent , rgba(13,53,78,0.96) )",
     backgroundRepeat: "no-repeat"
   },
   bottomOpacity: {
     position: "absolute",
     bottom: 0,
     width: "100%",
-    height: 75,
+    height: 45,
     background:
-      "linear-gradient( to bottom, transparent , rgba(13,53,78, 0.98) )",
+      "linear-gradient( to bottom, transparent , rgba(13,53,78, 0.96) )",
     backgroundRepeat: "no-repeat"
   },
 
@@ -75,73 +75,27 @@ const useStyles = makeStyles(theme => ({
 
 export default function Categorie(props) {
   const classes = useStyles();
+
   const filename = {
     air: "airopacity.png",
     eau: "eau.jpg",
     sol: "sol.jpg"
   };
-  const backgd = {
+  let backgd = {
     backgroundImage: `url('./photos/${filename[props.name]}')`,
-    backgroundPosition: "top center",
+    backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     width: "100%"
   };
 
-  function renderDetails() {
-    switch (props.name) {
-      case "eau":
-        return (
-          <div>
-            <img
-              className={classes.responsive}
-              src={"./photos/detaileau.jpg"}
-              alt="detaileau"
-            />
-          </div>
-        );
-      case "sol":
-        return (
-          <Container maxWidth="sm" style={{ marginTop: 25, marginBottom: 25 }}>
-            <Grid container spacing={1} justify="center" alignItems="stretch">
-              <Grid item xs={12} sm={6}>
-                <Typography variant="subtitle2" gutterBottom>
-                  NIVEAU DE LA NAPPE
-                </Typography>
-                <Typography variant="h4" gutterBottom>
-                  Eocène
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography variant="subtitle2" gutterBottom>
-                  NIVEAU DE LA RIVIERE
-                </Typography>
-                <Typography variant="h4" gutterBottom>
-                  Dordogne
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography variant="h5" gutterBottom>
-                  Nappe <b>profonde</b>
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <Typography variant="h5" gutterBottom>
-                  <b>24 mètres</b>
-                </Typography>
-              </Grid>
-            </Grid>
-          </Container>
-        );
-      default:
-        return null;
-    }
-  }
   let test = {
     xs: 12,
     sm: 6
   };
+  if (props.name === "air") {
+    backgd.backgroundPosition = "top center";
+  }
   if (props.name === "eau") {
     test = {
       xs: 6
@@ -199,4 +153,55 @@ export default function Categorie(props) {
       </div>
     </div>
   );
+
+  function renderDetails() {
+    switch (props.name) {
+      case "eau":
+        return (
+          <div>
+            <img
+              className={classes.responsive}
+              src={"./photos/detaileau.jpg"}
+              alt="detaileau"
+            />
+          </div>
+        );
+      case "sol":
+        return (
+          <Container maxWidth="sm" style={{ marginTop: 25, marginBottom: 25 }}>
+            <Grid container spacing={1} justify="center" alignItems="stretch">
+              <Grid item xs={12} sm={6}>
+                <Typography variant="subtitle2" gutterBottom>
+                  NIVEAU DE LA NAPPE
+                </Typography>
+                <Typography variant="h4" gutterBottom>
+                  Eocène
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="subtitle2" gutterBottom>
+                  NIVEAU DE LA RIVIERE
+                </Typography>
+                <Typography variant="h4" gutterBottom>
+                  Dordogne
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h5" gutterBottom>
+                  Nappe <b>profonde</b>
+                </Typography>
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h5" gutterBottom>
+                  <b>24 mètres</b>
+                </Typography>
+              </Grid>
+            </Grid>
+          </Container>
+        );
+      default:
+        return null;
+    }
+  }
 }
