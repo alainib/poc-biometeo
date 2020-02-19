@@ -33,8 +33,7 @@ const useStyles = makeStyles(theme => ({
   responsive: {
     width: "100%",
     maxWidth: "1000px",
-    height: "auto",
-    backgroundColor: "red"
+    height: "auto"
   },
   container: {
     display: "flex",
