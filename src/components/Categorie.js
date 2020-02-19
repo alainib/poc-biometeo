@@ -50,17 +50,17 @@ const useStyles = makeStyles(theme => ({
 
   topOpacity: {
     position: "absolute",
-    top: 0,
+    top: -2,
     width: "100%",
-    height: 45,
+    height: 50,
     background: "linear-gradient( to top, transparent , rgba(13,53,78,0.96) )",
     backgroundRepeat: "no-repeat"
   },
   bottomOpacity: {
     position: "absolute",
-    bottom: 0,
+    bottom: -2,
     width: "100%",
-    height: 45,
+    height: 50,
     background:
       "linear-gradient( to bottom, transparent , rgba(13,53,78, 0.96) )",
     backgroundRepeat: "no-repeat"
