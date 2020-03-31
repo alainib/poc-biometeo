@@ -85,8 +85,8 @@ export default function Categorie(props) {
 
   const filename = {
     air: 'airopacity.png',
-    eau: 'eau.jpg',
-    sol: 'sol.jpg'
+    eau: 'eau.png',
+    sol: 'sol.png'
   };
   let backgd = {
     backgroundImage: `url('./photos/${filename[props.name]}')`,
