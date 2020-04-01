@@ -7,7 +7,7 @@ import Categorie from "./components/Categorie";
 function App() {
   return (
     <div className="App">
-      <h5 style={{ paddingLeft: 15 }}>BioMétéo</h5>
+      <h5 style={{ paddingLeft: 15 }}>Météo</h5>
       <header className="App-header">
         <Meteo />
         <Categorie name="air" display="Air" bottomOpacity />
