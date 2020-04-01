@@ -1,3 +1,5 @@
 https://poc-b-i-o-meteo.netlify.com/
 
 https://compresspng.com/
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Backgrounds_and_Borders/Using_multiple_backgrounds?redirectlocale=en-US&redirectslug=CSS%2FMultiple_backgrounds

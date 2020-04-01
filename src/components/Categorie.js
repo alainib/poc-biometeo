@@ -14,60 +14,61 @@
  * limitations under the License.
  */
 
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import useComponentSize from '@rehooks/component-size';
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import useComponentSize from "@rehooks/component-size";
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
   leftText: {
-    textAlign: 'left',
-    width: 'auto',
-    display: 'inline-block'
+    textAlign: "left",
+    width: "auto",
+    display: "inline-block"
   },
   responsive: {
-    width: '100%',
-    maxWidth: '1000px',
-    height: 'auto'
+    width: "100%",
+    maxWidth: "1000px",
+    height: "auto"
   },
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
   },
   overlay: {
-    backgroundColor: 'rgba(13,53,78, 0.6)',
-    color: 'white',
-    position: 'relative'
+    backgroundColor: "rgba(13,53,78, 0.6)",
+
+    color: "white",
+    position: "relative"
   },
 
   topOpacity: {
-    position: 'absolute',
+    position: "absolute",
     top: -2,
-    width: '100%',
+    width: "100%",
     height: 75,
-    background: 'linear-gradient( to top, transparent , rgba(13,53,78,0.9 ) )',
-    backgroundRepeat: 'no-repeat'
+    background: "linear-gradient( to top, transparent , rgba(13,53,78,0.9 ) )",
+    backgroundRepeat: "no-repeat"
   },
   bottomOpacity: {
-    position: 'absolute',
+    position: "absolute",
     bottom: -2,
-    width: '100%',
+    width: "100%",
     height: 75,
     background:
-      'linear-gradient( to bottom, transparent , rgba(13,53,78, 0.9 ) )',
-    backgroundRepeat: 'no-repeat'
+      "linear-gradient( to bottom, transparent , rgba(13,53,78, 0.9 ) )",
+    backgroundRepeat: "no-repeat"
   },
 
   padding: {
-    padding: 'auto',
+    padding: "auto",
     paddingTop: 85,
     paddingBottom: 85
   }
@@ -78,9 +79,7 @@ export default function Categorie(props) {
 
   let ref = useRef(null);
   let size = useComponentSize(ref);
-  // size == { width: 100, height: 200 }
   let { width, height } = size;
-
   console.log(props.name, props.bgpos, {
     width,
     height,
@@ -88,17 +87,19 @@ export default function Categorie(props) {
   });
 
   const filename = {
-    air: 'air.png',
-    eau: 'eau.png',
-    sol: 'sol.png'
+    air: "air.jpg",
+    eau: "eau.jpg",
+    sol: "sol.jpg"
   };
 
   let backgd = {
-    backgroundImage: `url('./photos/${filename[props.name]}')`,
-    backgroundPosition: props.bgpos || 'center',
-    backgroundSize: '100% auto',
-    backgroundRepeat: 'no-repeat',
-    width: '100%'
+    backgroundImage: `url('./photos/${filename[props.name]}')  `,
+    backgroundPosition: props.bgpos || "center",
+    backgroundSize: "cover",
+    backgroundRepeat: `${width}px ${height}px`,
+    width: "100%"
+    /*filter: "blur(4px)",
+    webkitFilter: "blur(px)"*/
   };
 
   let test = {
@@ -106,7 +107,7 @@ export default function Categorie(props) {
     sm: 6
   };
 
-  if (props.name === 'eau') {
+  if (props.name === "eau") {
     test = {
       xs: 6
     };
@@ -126,31 +127,31 @@ export default function Categorie(props) {
               <Grid item xs={12}>
                 <img
                   className={classes.responsive}
-                  src={'./photos/animal.jpg'}
+                  src={"./photos/animal.jpg"}
                   alt="meteo"
                 />
               </Grid>
             </Grid>
             <Grid container spacing={1} justify="center" alignItems="center">
-              <Grid item {...test} style={{ position: 'relative' }}>
+              <Grid item {...test} style={{ position: "relative" }}>
                 <img
                   className={classes.responsive}
-                  src={'./photos/animal.jpg'}
+                  src={"./photos/animal.jpg"}
                   alt="meteo"
                 />
-                <div style={{ position: 'absolute', bottom: 20, left: 10 }}>
+                <div style={{ position: "absolute", bottom: 20, left: 10 }}>
                   <i>Galinette cendrée</i>
                   <br />
                   <b>Espèce endémique</b> observée 132
                 </div>
               </Grid>
-              <Grid item {...test} style={{ position: 'relative' }}>
+              <Grid item {...test} style={{ position: "relative" }}>
                 <img
                   className={classes.responsive}
-                  src={'./photos/animal.jpg'}
+                  src={"./photos/animal.jpg"}
                   alt="meteo"
                 />
-                <div style={{ position: 'absolute', bottom: 20, left: 10 }}>
+                <div style={{ position: "absolute", bottom: 20, left: 10 }}>
                   <i>Galinette cendrée</i>
                   <br />
                   <b>Espèce endémique</b> observée 132
@@ -167,17 +168,17 @@ export default function Categorie(props) {
 
   function renderDetails() {
     switch (props.name) {
-      case 'eau':
+      case "eau":
         return (
           <div>
             <img
               className={classes.responsive}
-              src={'./photos/detaileau.jpg'}
+              src={"./photos/detaileau.jpg"}
               alt="detaileau"
             />
           </div>
         );
-      case 'sol':
+      case "sol":
         return (
           <Container maxWidth="sm" style={{ marginTop: 25, marginBottom: 25 }}>
             <Grid container spacing={1} justify="center" alignItems="stretch">
