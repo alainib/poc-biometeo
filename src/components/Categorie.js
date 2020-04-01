@@ -14,61 +14,43 @@
  * limitations under the License.
  */
 
-import React, { useRef } from "react";
+import React, { useRef } from 'react';
 
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import useComponentSize from "@rehooks/component-size";
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import useComponentSize from '@rehooks/component-size';
 
+const BACKGROUNDCOLOR = 'rgba(13,53,78, 0.6)';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
   leftText: {
-    textAlign: "left",
-    width: "auto",
-    display: "inline-block"
+    textAlign: 'left',
+    width: 'auto',
+    display: 'inline-block'
   },
   responsive: {
-    width: "100%",
-    maxWidth: "1000px",
-    height: "auto"
+    width: '100%',
+    maxWidth: '1000px',
+    height: 'auto'
   },
   container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center"
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   overlay: {
-    backgroundColor: "rgba(13,53,78, 0.6)",
-
-    color: "white",
-    position: "relative"
-  },
-
-  topOpacity: {
-    position: "absolute",
-    top: -2,
-    width: "100%",
-    height: 75,
-    background: "linear-gradient( to top, transparent , rgba(13,53,78,0.9 ) )",
-    backgroundRepeat: "no-repeat"
-  },
-  bottomOpacity: {
-    position: "absolute",
-    bottom: -2,
-    width: "100%",
-    height: 75,
-    background:
-      "linear-gradient( to bottom, transparent , rgba(13,53,78, 0.9 ) )",
-    backgroundRepeat: "no-repeat"
+    backgroundColor: BACKGROUNDCOLOR,
+    color: 'white',
+    position: 'relative'
   },
 
   padding: {
-    padding: "auto",
+    padding: 'auto',
     paddingTop: 85,
     paddingBottom: 85
   }
@@ -87,19 +69,31 @@ export default function Categorie(props) {
   });
 
   const filename = {
-    air: "air.jpg",
-    eau: "eau.jpg",
-    sol: "sol.jpg"
+    air: 'air.jpg',
+    eau: 'eau.jpg',
+    sol: 'sol.jpg'
   };
-
-  let backgd = {
+  /*
+    backgroundPosition: props.bgpos || 'center',
+    backgroundSize: 'cover',
     backgroundImage: `url('./photos/${filename[props.name]}')  `,
-    backgroundPosition: props.bgpos || "center",
-    backgroundSize: "cover",
-    backgroundRepeat: `${width}px ${height}px`,
-    width: "100%"
-    /*filter: "blur(4px)",
-    webkitFilter: "blur(px)"*/
+  */
+  let backgd = {
+    width: '100%',
+    height: '100%',
+    content: '',
+    position: 'absolute',
+    zIndex: -1,
+    left: 0,
+    right: 0,
+    top: '-50px',
+    bottom: '-50px',
+    background: `url('./photos/${filename[props.name]}') ${props.bgpos ||
+      'center'}/cover`,
+    webkitMask:
+      'linear-gradient(transparent ,#fff 50px calc(100% - 50px),transparent)',
+    mask:
+      'linear-gradient(transparent ,#fff 50px calc(100% - 50px),transparent)'
   };
 
   let test = {
@@ -107,78 +101,86 @@ export default function Categorie(props) {
     sm: 6
   };
 
-  if (props.name === "eau") {
+  if (props.name === 'eau') {
     test = {
       xs: 6
     };
   }
 
   return (
-    <div style={backgd} ref={ref}>
-      <div className={classes.overlay}>
-        {props.topOpacity && <div className={classes.topOpacity} />}
-        <div className={classes.padding}>
-          <Container maxWidth="sm">
-            <Typography variant="h2" gutterBottom>
-              {props.display}
-            </Typography>
+    <div
+      style={{
+        color: BACKGROUNDCOLOR,
+        width: '100%',
+        height: '100%',
+        position: 'relative'
+      }}
+      ref={ref}
+    >
+      <div style={backgd} ref={ref}>
+        <div className={classes.overlay}>
+          <div className={classes.padding}>
+            <Container maxWidth="sm">
+              <Typography variant="h2" gutterBottom>
+                {props.display}
+              </Typography>
 
-            <Grid container spacing={1} justify="center" alignItems="center">
-              <Grid item xs={12}>
-                <img
-                  className={classes.responsive}
-                  src={"./photos/animal.jpg"}
-                  alt="meteo"
-                />
+              <Grid container spacing={1} justify="center" alignItems="center">
+                <Grid item xs={12}>
+                  <img
+                    className={classes.responsive}
+                    src={'./photos/animal.jpg'}
+                    alt="meteo"
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-            <Grid container spacing={1} justify="center" alignItems="center">
-              <Grid item {...test} style={{ position: "relative" }}>
-                <img
-                  className={classes.responsive}
-                  src={"./photos/animal.jpg"}
-                  alt="meteo"
-                />
-                <div style={{ position: "absolute", bottom: 20, left: 10 }}>
-                  <i>Galinette cendrée</i>
-                  <br />
-                  <b>Espèce endémique</b> observée 132
-                </div>
+              <Grid container spacing={1} justify="center" alignItems="center">
+                <Grid item {...test} style={{ position: 'relative' }}>
+                  <img
+                    className={classes.responsive}
+                    src={'./photos/animal.jpg'}
+                    alt="meteo"
+                  />
+                  <div style={{ position: 'absolute', bottom: 20, left: 10 }}>
+                    <i>Galinette cendrée</i>
+                    <br />
+                    <b>Espèce endémique</b> observée 132
+                  </div>
+                </Grid>
+                <Grid item {...test} style={{ position: 'relative' }}>
+                  <img
+                    className={classes.responsive}
+                    src={'./photos/animal.jpg'}
+                    alt="meteo"
+                  />
+                  <div style={{ position: 'absolute', bottom: 20, left: 10 }}>
+                    <i>Galinette cendrée</i>
+                    <br />
+                    <b>Espèce endémique</b> observée 132
+                  </div>
+                </Grid>
               </Grid>
-              <Grid item {...test} style={{ position: "relative" }}>
-                <img
-                  className={classes.responsive}
-                  src={"./photos/animal.jpg"}
-                  alt="meteo"
-                />
-                <div style={{ position: "absolute", bottom: 20, left: 10 }}>
-                  <i>Galinette cendrée</i>
-                  <br />
-                  <b>Espèce endémique</b> observée 132
-                </div>
-              </Grid>
-            </Grid>
-            {renderDetails()}
-          </Container>
+              {renderDetails()}
+            </Container>
+          </div>
         </div>
-        {props.bottomOpacity && <div className={classes.bottomOpacity} />}
       </div>
     </div>
   );
 
   function renderDetails() {
     switch (props.name) {
-      case "eau":
+      case 'eau':
         return (
           <div>
             <img
               className={classes.responsive}
-              src={"./photos/detaileau.jpg"}
+              src={'./photos/detaileau.jpg'}
               alt="detaileau"
             />
           </div>
         );
-      case "sol":
+      case 'sol':
         return (
           <Container maxWidth="sm" style={{ marginTop: 25, marginBottom: 25 }}>
             <Grid container spacing={1} justify="center" alignItems="stretch">

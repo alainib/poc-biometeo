@@ -11,3 +11,45 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*.boxp {
+  height:60vh;
+  font-size:50px;
+  text-align:center;
+  color:#fff;
+  position:relative;
+  z-index:0;
+}
+.box {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:0;
+  right:0;
+  top:-50px;
+  bottom:-50px;
+  background: center/cover;
+  -webkit-mask:linear-gradient(transparent ,#fff 70px calc(100% - 50px),transparent);
+          mask:linear-gradient(transparent ,#fff 70px calc(100% - 50px),transparent);
+}
+
+
+<div class="boxp" >
+  <div class="box" style="background-image:url(https://i.picsum.photos/id/1002/800/800.jpg)"></div>
+  text 1
+  
+ </div>
+ 
+<div class="boxp" >
+   <div class="box" style="background-image:url(https://i.picsum.photos/id/109/800/800.jpg)"> </div>
+   text 2
+   </div>
+<div class="boxp" >
+   <div class="box" style="background-image:url(https://i.picsum.photos/id/107/800/800.jpg)"> </div>
+    text 3
+</div>
+<div class="boxp" >
+      <div class="box" style="background-image:url(https://i.picsum.photos/id/177/800/800.jpg)"></div>
+      text 4
+</div>
+*/

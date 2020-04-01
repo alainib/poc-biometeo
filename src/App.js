@@ -1,8 +1,8 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
-import Meteo from "./components/Meteo";
-import Categorie from "./components/Categorie";
+import Meteo from './components/Meteo';
+import Categorie from './components/Categorie';
 
 function App() {
   return (
@@ -11,11 +11,8 @@ function App() {
       <header className="App-header">
         <Meteo />
         <Categorie name="air" display="Air" bgpos="bottom" />
-        {/* bottomOpacity*/}
         <Categorie name="sol" display="Sol" bgpos="center" />
-        {/*  bottomOpacity topOpacity*/}
         <Categorie name="eau" display="Eau" bgpos="top" />
-        {/* topOpacity */}
       </header>
     </div>
   );
