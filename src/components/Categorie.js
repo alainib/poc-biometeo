@@ -46,7 +46,8 @@ const useStyles = makeStyles(theme => ({
   overlay: {
     backgroundColor: BACKGROUNDCOLOR,
     color: 'white',
-    position: 'relative'
+    position: 'relative',
+    height:"100vh"
   },
 
   padding: {

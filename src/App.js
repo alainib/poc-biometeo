@@ -25,7 +25,7 @@ const container = {
 };
 
 function App() {
-  return (
+  /* return (
     <div className="App">
       <h5 style={{ paddingLeft: 15 }}>Météo</h5>
       <header className="App-header">
@@ -35,7 +35,7 @@ function App() {
         <Categorie name="eau" display="Eau" bgpos="top" />
       </header>
     </div>
-  );
+  );*/
 
   return (
     <div className="App">
@@ -61,7 +61,7 @@ function App() {
             <div style={overlay}>
               <div style={container}>
                 <div
-                  style={{ height: 200, width: 200, backgroundColor: 'grey' }}
+                  style={{ height: 400, width: 200, backgroundColor: 'grey' }}
                 ></div>
               </div>
             </div>
@@ -88,7 +88,7 @@ function App() {
             <div style={overlay}>
               <div style={container}>
                 <div
-                  style={{ height: 200, width: 200, backgroundColor: 'grey' }}
+                  style={{ height: 400, width: 200, backgroundColor: 'grey' }}
                 ></div>
               </div>
             </div>
@@ -114,7 +114,7 @@ function App() {
             <div style={overlay}>
               <div style={container}>
                 <div
-                  style={{ height: 200, width: 200, backgroundColor: 'grey' }}
+                  style={{ height: 500, width: 200, backgroundColor: 'grey' }}
                 ></div>
               </div>
             </div>
