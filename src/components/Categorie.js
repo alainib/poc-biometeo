@@ -22,7 +22,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import useComponentSize from '@rehooks/component-size';
 
-const BACKGROUNDCOLOR = 'rgba(13,53,78, 0.6)';
+const BACKGROUNDCOLOR = 'rgba(13,53,78, 0.5)';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: BACKGROUNDCOLOR,
     color: 'white',
     position: 'relative',
-    height:"100vh"
+    height: '100%'
   },
 
   padding: {
@@ -96,14 +96,14 @@ export default function Categorie(props) {
           position: 'absolute',
           left: 0,
           right: 0,
-          top: '-50px',
-          bottom: '-50px',
+          top: '-70px',
+          bottom: '-70px',
           background: `url('./photos/${filename[props.name]}') ${props.bgpos ||
             'center'}/cover`,
           webkitMask:
-            'linear-gradient(transparent ,#fff 50px calc(100% - 50px),transparent)',
+            'linear-gradient(transparent ,#fff 70px calc(100% - 50px),transparent)',
           mask:
-            'linear-gradient(transparent ,#fff 50px calc(100% - 50px),transparent)'
+            'linear-gradient(transparent ,#fff 70px calc(100% - 50px),transparent)'
         }}
         ref={ref}
       >

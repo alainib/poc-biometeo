@@ -25,7 +25,7 @@ const container = {
 };
 
 function App() {
-   return (
+  return (
     <div className="App">
       <h5 style={{ paddingLeft: 15 }}>Météo</h5>
       <header className="App-header">
