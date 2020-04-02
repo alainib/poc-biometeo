@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-import React from "react";
+import React from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   responsive: {
-    width: "100%",
-    height: "auto",
-    maxWidth: "1000px"
+    width: '100%',
+    height: 'auto',
+    maxWidth: '1000px'
   }
 }));
 
@@ -30,10 +30,10 @@ export default function Meteo() {
   const classes = useStyles();
 
   return (
-    <div>
+    <div style={{ paddingBottom: 75 }}>
       <img
         className={classes.responsive}
-        src={"./photos/meteo.png"}
+        src={'./photos/meteo.png'}
         alt="meteo"
       />
     </div>

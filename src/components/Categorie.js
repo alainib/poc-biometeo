@@ -68,56 +68,44 @@ export default function Categorie(props) {
     ratio: width / height
   });
 
+  let test = {
+    xs: props.name === 'eau' ? 6 : 12,
+    sm: 6
+  };
+
   const filename = {
     air: 'air.jpg',
     eau: 'eau.jpg',
     sol: 'sol.jpg'
   };
-  /*
-    backgroundPosition: props.bgpos || 'center',
-    backgroundSize: 'cover',
-    backgroundImage: `url('./photos/${filename[props.name]}')  `,
-  */
-  let backgd = {
-    width: '100%',
-    height: '100%',
-    content: '',
-    position: 'absolute',
-    zIndex: -1,
-    left: 0,
-    right: 0,
-    top: '-50px',
-    bottom: '-50px',
-    background: `url('./photos/${filename[props.name]}') ${props.bgpos ||
-      'center'}/cover`,
-    webkitMask:
-      'linear-gradient(transparent ,#fff 50px calc(100% - 50px),transparent)',
-    mask:
-      'linear-gradient(transparent ,#fff 50px calc(100% - 50px),transparent)'
-  };
-
-  let test = {
-    xs: 12,
-    sm: 6
-  };
-
-  if (props.name === 'eau') {
-    test = {
-      xs: 6
-    };
-  }
 
   return (
     <div
       style={{
         color: BACKGROUNDCOLOR,
         width: '100%',
-        height: '100%',
+        height: '100vh',
         position: 'relative'
       }}
       ref={ref}
     >
-      <div style={backgd} ref={ref}>
+      <div
+        style={{
+          width: '100%',
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: '-50px',
+          bottom: '-50px',
+          background: `url('./photos/${filename[props.name]}') ${props.bgpos ||
+            'center'}/cover`,
+          webkitMask:
+            'linear-gradient(transparent ,#fff 50px calc(100% - 50px),transparent)',
+          mask:
+            'linear-gradient(transparent ,#fff 50px calc(100% - 50px),transparent)'
+        }}
+        ref={ref}
+      >
         <div className={classes.overlay}>
           <div className={classes.padding}>
             <Container maxWidth="sm">
