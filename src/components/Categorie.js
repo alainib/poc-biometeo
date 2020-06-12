@@ -21,40 +21,41 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import useComponentSize from '@rehooks/component-size';
+import Meteo from './Meteo';
 
 const BACKGROUNDCOLOR = 'rgba(13,53,78, 0.5)';
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   leftText: {
     textAlign: 'left',
     width: 'auto',
-    display: 'inline-block'
+    display: 'inline-block',
   },
   responsive: {
     width: '100%',
     maxWidth: '1000px',
-    height: 'auto'
+    height: 'auto',
   },
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   overlay: {
     backgroundColor: BACKGROUNDCOLOR,
     color: 'white',
     position: 'relative',
-    height: '100%'
+    height: '100%',
   },
 
   padding: {
     padding: 'auto',
     paddingTop: 85,
-    paddingBottom: 85
-  }
+    paddingBottom: 85,
+  },
 }));
 
 export default function Categorie(props) {
@@ -66,27 +67,30 @@ export default function Categorie(props) {
   console.log(props.name, props.bgpos, {
     width,
     height,
-    ratio: width / height
+    ratio: width / height,
   });
 
   let test = {
     xs: props.name === 'eau' ? 6 : 12,
-    sm: 6
+    sm: 6,
   };
 
   const filename = {
     air: 'air.jpg',
     eau: 'eau.jpg',
-    sol: 'sol.jpg'
+    sol: 'sol.jpg',
   };
 
+  const maskValue = `linear-gradient(transparent ,#fff ${
+    props.name === 'air' ? '470px' : '70px'
+  }  calc(100% - 50px),transparent)`;
   return (
     <div
       style={{
         color: BACKGROUNDCOLOR,
         width: '100%',
         height: '100vh',
-        position: 'relative'
+        position: 'relative',
       }}
       ref={ref}
     >
@@ -98,12 +102,11 @@ export default function Categorie(props) {
           right: 0,
           top: '-70px',
           bottom: '-70px',
-          background: `url('./photos/${filename[props.name]}') ${props.bgpos ||
-            'center'}/cover`,
-          webkitMask:
-            'linear-gradient(transparent ,#fff 70px calc(100% - 50px),transparent)',
-          mask:
-            'linear-gradient(transparent ,#fff 70px calc(100% - 50px),transparent)'
+          background: `url('./photos/${filename[props.name]}') ${
+            props.bgpos || 'center'
+          }/cover`,
+          webkitMask: maskValue,
+          mask: maskValue,
         }}
         ref={ref}
       >

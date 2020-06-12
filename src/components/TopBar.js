@@ -19,23 +19,37 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  responsive: {
-    width: '100%',
+  responsiveIcon: {
+    width: '75%',
+    maxWidth: '400px',
     height: 'auto',
-    maxWidth: '1000px',
+  },
+  rowDirection: {
+    margin: 20,
+    width: '90%',
+    height: 'auto',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    color: 'white',
   },
 }));
 
-export default function Meteo() {
+export default function TopBar() {
   const classes = useStyles();
 
   return (
-    <div style={{ paddingBottom: 75, zIndex: 10 }}>
-      <img
-        className={classes.responsive}
-        src={'./photos/meteo.png'}
-        alt="meteo"
-      />
+    <div className={classes.rowDirection}>
+      <div>
+        <img
+          className={classes.responsiveIcon}
+          src={'./icons/biometeo.png'}
+          alt="biometeo"
+        />
+      </div>
+      <div>Localisation Search</div>
+      <div>BM</div>
     </div>
   );
 }
