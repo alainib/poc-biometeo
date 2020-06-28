@@ -23,191 +23,82 @@ import { makeStyles } from '@material-ui/core/styles';
 import useComponentSize from '@rehooks/component-size';
 import Meteo from './Meteo';
 
-const BACKGROUNDCOLOR = 'rgba(13,53,78, 0.5)';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  leftText: {
-    textAlign: 'left',
-    width: 'auto',
-    display: 'inline-block',
-  },
-  responsive: {
-    width: '100%',
-    maxWidth: '1000px',
-    height: 'auto',
-  },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  overlay: {
-    backgroundColor: BACKGROUNDCOLOR,
-    color: 'white',
-    position: 'relative',
-    height: '100%',
-  },
+const BACKGROUNDCOLOR = 'rgba(13,53,78, 0.8)';
 
-  padding: {
-    padding: 'auto',
-    paddingTop: 85,
-    paddingBottom: 85,
-  },
-}));
+const adiv = {
+  height: 450,
+  width: 600,
+  backgroundColor: 'yellow',
+  border: '3px solid red',
+};
+const bdiv = {
+  height: 200,
+  width: 600,
+  backgroundColor: 'grey',
+  border: '3px solid red',
+};
+const cdiv = {
+  height: 100,
+  width: 600,
+  backgroundColor: 'green',
+  border: '3px solid red',
+};
+
+const relativeBox = {
+  width: '100%',
+  position: 'relative',
+};
+const overlay = {
+  backgroundColor: BACKGROUNDCOLOR,
+  color: 'white',
+  position: 'relative',
+  zIndex: 10,
+  padding: '50px',
+};
+const container = {
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
 
 export default function Categorie(props) {
-  const classes = useStyles();
-
   let ref = useRef(null);
   let size = useComponentSize(ref);
   let { width, height } = size;
-  console.log(props.name, props.bgpos, {
-    width,
-    height,
-    ratio: width / height,
-  });
-
-  let test = {
-    xs: props.name === 'eau' ? 6 : 12,
-    sm: 6,
-  };
-
-  const filename = {
-    air: 'air.jpg',
-    eau: 'eau.jpg',
-    sol: 'sol.jpg',
-  };
 
   const maskValue = `linear-gradient(transparent ,#fff ${
-    props.name === 'air' ? '470px' : '70px'
+    props.name === 'air' ? '370px' : '70px'
   }  calc(100% - 50px),transparent)`;
+
   return (
-    <div
-      style={{
-        color: BACKGROUNDCOLOR,
-        width: '100%',
-        height: '100vh',
-        position: 'relative',
-      }}
-      ref={ref}
-    >
+    <div style={relativeBox} id={props.name} ref={ref}>
       <div
         style={{
           width: '100%',
           position: 'absolute',
           left: 0,
           right: 0,
-          top: '-70px',
-          bottom: '-70px',
-          background: `url('./photos/${filename[props.name]}') ${
-            props.bgpos || 'center'
-          }/cover`,
+
+          top: props.noPT ? '0px' : '-100px',
+          bottom: props.noPB ? '0px' : '-50px',
           webkitMask: maskValue,
           mask: maskValue,
+          background:
+            "url('https://poc-b-i-o-meteo.netlify.com/photos/eau.jpg') bottom/cover",
         }}
-        ref={ref}
-      >
-        <div className={classes.overlay}>
-          <div className={classes.padding}>
-            <Container maxWidth="sm">
-              <Typography variant="h2" gutterBottom>
-                {props.display}
-              </Typography>
-
-              <Grid container spacing={1} justify="center" alignItems="center">
-                <Grid item xs={12}>
-                  <img
-                    className={classes.responsive}
-                    src={'./photos/animal.jpg'}
-                    alt="meteo"
-                  />
-                </Grid>
-              </Grid>
-              <Grid container spacing={1} justify="center" alignItems="center">
-                <Grid item {...test} style={{ position: 'relative' }}>
-                  <img
-                    className={classes.responsive}
-                    src={'./photos/animal.jpg'}
-                    alt="meteo"
-                  />
-                  <div style={{ position: 'absolute', bottom: 20, left: 10 }}>
-                    <i>Galinette cendrée</i>
-                    <br />
-                    <b>Espèce endémique</b> observée 132
-                  </div>
-                </Grid>
-                <Grid item {...test} style={{ position: 'relative' }}>
-                  <img
-                    className={classes.responsive}
-                    src={'./photos/animal.jpg'}
-                    alt="meteo"
-                  />
-                  <div style={{ position: 'absolute', bottom: 20, left: 10 }}>
-                    <i>Galinette cendrée</i>
-                    <br />
-                    <b>Espèce endémique</b> observée 132
-                  </div>
-                </Grid>
-              </Grid>
-              {renderDetails()}
-            </Container>
-          </div>
+      ></div>
+      <div style={overlay}>
+        <div style={container}>
+          {props.name === 'air' && <Meteo />}
+          {props.name}
+          <div style={adiv}>a</div>
+          <div style={bdiv}>b</div>
+          {props.name === 'sol' && <div style={cdiv}>c</div>}
+          {props.name === 'sol' && <div style={cdiv}>c</div>}
         </div>
       </div>
     </div>
   );
-
-  function renderDetails() {
-    switch (props.name) {
-      case 'eau':
-        return (
-          <div>
-            <img
-              className={classes.responsive}
-              src={'./photos/detaileau.jpg'}
-              alt="detaileau"
-            />
-          </div>
-        );
-      case 'sol':
-        return (
-          <Container maxWidth="sm" style={{ marginTop: 25, marginBottom: 25 }}>
-            <Grid container spacing={1} justify="center" alignItems="stretch">
-              <Grid item xs={12} sm={6}>
-                <Typography variant="subtitle2" gutterBottom>
-                  NIVEAU DE LA NAPPE
-                </Typography>
-                <Typography variant="h4" gutterBottom>
-                  Eocène
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography variant="subtitle2" gutterBottom>
-                  NIVEAU DE LA RIVIERE
-                </Typography>
-                <Typography variant="h4" gutterBottom>
-                  Dordogne
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography variant="h5" gutterBottom>
-                  Nappe <b>profonde</b>
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <Typography variant="h5" gutterBottom>
-                  <b>24 mètres</b>
-                </Typography>
-              </Grid>
-            </Grid>
-          </Container>
-        );
-      default:
-        return null;
-    }
-  }
 }
